@@ -3,7 +3,7 @@ var registered;
 
 function detect() {
 	try {
-		return require('zen-observable');
+		return require('rxjs/Rx').Observable;
 	} catch (err) {}
 
 	try {
@@ -11,7 +11,7 @@ function detect() {
 	} catch (err) {}
 
 	try {
-		return require('rxjs/Rx').Observable;
+		return require('zen-observable');
 	} catch (err) {}
 }
 
