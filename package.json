@@ -1,0 +1,33 @@
+{
+  "name": "any-observable",
+  "version": "0.0.0",
+  "description": "Support any Observable library and polyfill",
+  "license": "MIT",
+  "repository": "sindresorhus/any-observable",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "observable",
+    "observables",
+    "support",
+    "polyfill",
+    "any"
+  ],
+  "devDependencies": {
+    "ava": "*",
+    "xo": "*",
+    "zen-observable": "^0.2.1"
+  }
+}
