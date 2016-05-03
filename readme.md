@@ -28,6 +28,26 @@ Observable.of(1, 2).forEach(x => console.log(x));
 //=> 2
 ```
 
+## Registration Shortcuts
+
+This adds the following shortcut registrations:
+
+- `rxjs-min`: Bare bones [RxJs](https://github.com/ReactiveX/rxjs) Observable implementation. See the [RxJs Installation Instructions](http://reactivex.io/rxjs/manual/installation.html) for details on patching additional methods into that implementation.
+- `rxjs`: Same as `rxjs-min`, but adds the somewhat standard `Observable.of` and `Observable.from`.
+- `rxjs-all`: The kitchen sink approach to Observables.
+- `zen`: The [`zen-observable`](https://github.com/zenparsing/zen-observable) implementation.
+
+Shortcut registration can be done as follows:
+
+```js
+import 'any-observable/register/zen';
+```
+
+It's especially handy for more recent versions of Node.js (and many test runners), that offer a `--require` flag:
+
+```
+$ ava --require=any-observable/register/zen test.js
+```
 
 ## Related
 
