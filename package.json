@@ -21,7 +21,7 @@
     "loader.js",
     "register.js",
     "register-shim.js",
-    "register/**"
+    "register"
   ],
   "keywords": [
     "observable",
