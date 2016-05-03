@@ -1,40 +1,49 @@
 'use strict';
-var registered;
+module.exports = require('./loader')(global, loadImplementation);
 
-function detect() {
-	try {
-		return require('rxjs/Rx').Observable;
-	} catch (err) {}
+function loadImplementation(implementation) {
+	var impl;
 
-	try {
-		return require('rxjs/Observable').Observable;
-	} catch (err) {}
+	if (implementation === 'global.Observable') {
+		// if no implementation or env specified use global.Observable
+		impl = {
+			Observable: global.Observable,
+			implementation: 'global.Observable'
+		};
+	} else if (implementation) {
+		// if implementation specified, require it
+		var lib = require(implementation);
+		impl = {
+			Observable: lib.Observable || lib.default || lib,
+			implementation: implementation
+		};
+	} else {
+		// try to auto detect implementation. This is non-deterministic
+		// and should prefer other branches, but this is our last chance
+		// to load something without throwing error
+		impl = tryAutoDetect();
+	}
 
-	try {
-		return require('zen-observable');
-	} catch (err) {}
+	if (!impl) {
+		throw new Error('Cannot find any-observable implementation nor' +
+			' global.Observable. You must install polyfill or call' +
+			' require("any-observable/register") with your preferred' +
+			' implementation, e.g. require("any-observable/register")(\'rxjs\')' +
+			' on application load prior to any require("any-observable").');
+	}
+
+	return impl;
 }
 
-module.exports = function (implementation) {
-	if (registered) {
-		if (implementation) {
-			throw new Error('You can only register an Observable implementation before calling `require(\'any-observable\')`');
-		}
-
-		return registered;
+function tryAutoDetect() {
+	var libs = [
+		'rxjs/Observable',
+		'zen-observable'
+	];
+	for (var i = 0; i < libs.length; i++) {
+		try {
+			return loadImplementation(libs[i]);
+		} catch (e) {}
 	}
-
-	if (implementation) {
-		registered = require(implementation);
-	} else if (typeof global.Observable === 'function') {
-		registered = global.Observable;
-	} else {
-		registered = detect();
-	}
-
-	if (!registered) {
-		throw new Error('Cannot find any Observable global or implementation. You must register your preferred implementation. For example `require(\'any-observable\')(\'observable-polyfill\')`.');
-	}
-
-	return registered;
-};
+	return null;
+}

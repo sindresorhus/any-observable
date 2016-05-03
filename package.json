@@ -16,7 +16,11 @@
     "test": "xo && ava"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "implementation.js",
+    "loader.js",
+    "register.js",
+    "register-shim.js"
   ],
   "keywords": [
     "observable",
@@ -27,7 +31,11 @@
   ],
   "devDependencies": {
     "ava": "*",
+    "rxjs": "^5.0.0-beta.7",
     "xo": "*",
     "zen-observable": "^0.2.1"
+  },
+  "browser": {
+    "./register.js": "./register-shim.js"
   }
 }
