@@ -9,16 +9,20 @@ const conf = path.join(__dirname, '..', 'browser', 'from-env.js');
 const testsDir = path.join(__dirname, '..', 'browser', 'tests');
 
 const testFiles = fs.readdirSync(testsDir);
+const majorVersion = Number(process.version.substring(1).split('.')[0]);
 
-testFiles.forEach(filename => {
-	const basename = path.basename(filename, '.js');
-	const filepath = path.join(testsDir, filename);
+if (majorVersion <= 4) {
+	test('skipped browser tests for Node.js <= 4', () => {});
+} else {
+	testFiles.forEach(filename => {
+		const basename = path.basename(filename, '.js');
+		const filepath = path.join(testsDir, filename);
 
-	test.serial(basename, () => {
-		return execa('karma', ['start', conf], {
-			cwd,
-			env: objectAssign({}, process.env, {ANY_OBSERVABLE_TEST_PATH: filepath})
+		test.serial(basename, () => {
+			return execa('karma', ['start', conf], {
+				cwd,
+				env: objectAssign({}, process.env, {ANY_OBSERVABLE_TEST_PATH: filepath})
+			});
 		});
 	});
-});
-
+}
