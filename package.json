@@ -34,7 +34,7 @@
     "arrify": "^1.0.1",
     "ava": "*",
     "browserify": "^13.0.0",
-    "execa": "github:sindresorhus/execa",
+    "execa": "^0.4.0",
     "karma": "^0.13.22",
     "karma-browserify": "^5.0.4",
     "karma-chrome-launcher": "^1.0.1",
@@ -55,7 +55,9 @@
     "overrides": [
       {
         "files": "browser/tests/**",
-        "globals": ["it"]
+        "globals": [
+          "it"
+        ]
       }
     ]
   }
