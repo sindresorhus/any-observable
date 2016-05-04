@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs';
 import test from 'ava';
 import execa from 'execa';
-import objectAssign from 'object-assign';
 
 const cwd = path.join(__dirname, '..');
 const conf = path.join(__dirname, '..', 'browser', 'from-env.js');
@@ -21,7 +20,7 @@ if (majorVersion <= 4) {
 		test.serial(basename, () => {
 			return execa('karma', ['start', conf], {
 				cwd,
-				env: objectAssign({}, process.env, {ANY_OBSERVABLE_TEST_PATH: filepath})
+				env: Object.assign({}, process.env, {ANY_OBSERVABLE_TEST_PATH: filepath})
 			});
 		});
 	});
