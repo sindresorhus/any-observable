@@ -42,6 +42,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "mocha": "^2.4.5",
     "phantomjs-prebuilt": "^2.1.7",
+    "proxyquire": "^1.7.4",
     "rxjs": "^5.0.0-beta.7",
     "watchify": "^3.7.0",
     "xo": "*",
@@ -59,5 +60,8 @@
         ]
       }
     ]
+  },
+  "dependencies": {
+    "object-assign": "^4.1.0"
   }
 }
