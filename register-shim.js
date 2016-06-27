@@ -3,7 +3,7 @@
 module.exports = require('./loader')(window, loadImplementation);
 
 /**
- * Browser specific loadImplementation.  Always uses `window.Observable`
+ * Browser specific loadImplementation. Always uses `window.Observable`
  *
  * To register a custom implementation, must register with `Observable` option.
  */
@@ -12,6 +12,7 @@ function loadImplementation() {
 		throw new Error('any-observable browser requires a polyfill or explicit registration' +
 			' e.g: require(\'any-observable/register\')(\'rxjs\', {Observable: require(\'rxjs/Observable\').Observable})');
 	}
+
 	return {
 		Observable: window.Observable,
 		implementation: 'window.Observable'

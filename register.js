@@ -13,6 +13,7 @@ function loadImplementation(implementation) {
 	} else if (implementation) {
 		// if implementation specified, require it
 		var lib = require(implementation);
+
 		impl = {
 			Observable: lib.Observable || lib.default || lib,
 			implementation: implementation
@@ -40,10 +41,12 @@ function tryAutoDetect() {
 		'rxjs/Observable',
 		'zen-observable'
 	];
+
 	for (var i = 0; i < libs.length; i++) {
 		try {
 			return loadImplementation(libs[i]);
-		} catch (e) {}
+		} catch (err) {}
 	}
+
 	return null;
 }
