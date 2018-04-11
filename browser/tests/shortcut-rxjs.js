@@ -1,11 +1,11 @@
-require('../../register/rxjs');
+require('../../register/rxjs'); // eslint-disable-line import/no-unassigned-import
 
-var assert = require('assert');
-var RxJsObservable = require('rxjs/Observable').Observable;
-var AnyObservable = require('../../');
-var implementation = require('../../implementation');
+const assert = require('assert');
+const RxJsObservable = require('rxjs/Observable').Observable;
+const AnyObservable = require('../..');
+const implementation = require('../../implementation');
 
-it('rxjs-min', function () {
+it('rxjs-min', () => {
 	assert.strictEqual(AnyObservable, RxJsObservable);
 	assert.strictEqual(implementation, 'rxjs/Observable');
 	assert.strictEqual(typeof RxJsObservable.of, 'function');

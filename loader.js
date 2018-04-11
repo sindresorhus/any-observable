@@ -1,15 +1,15 @@
 'use strict';
-var REGISTRATION_KEY = '@@any-observable/REGISTRATION';
-var registered = null;
+const REGISTRATION_KEY = '@@any-observable/REGISTRATION';
+let registered = null;
 
 module.exports = function (global, loadImplementation) {
-	return function register(implementation, opts) {
+	return function (implementation, opts) {
 		opts = opts || {};
 
 		// global registration unless explicitly  {global: false} in options (default true)
-		var registerGlobal = opts.global !== false;
+		const registerGlobal = opts.global !== false;
 
-		// load any previous global registration
+		// Load any previous global registration
 		if (registerGlobal && !registered) {
 			registered = global[REGISTRATION_KEY];
 		}
@@ -21,19 +21,19 @@ module.exports = function (global, loadImplementation) {
 		}
 
 		if (!registered) {
-			// use provided implementation
+			// Use provided implementation
 			if (implementation && opts.Observable) {
 				registered = {
 					Observable: opts.Observable,
-					implementation: implementation
+					implementation
 				};
 			} else {
-				// require implementation if implementation is specified but not provided
+				// Require implementation if implementation is specified but not provided
 				registered = loadImplementation(implementation || null);
 			}
 
 			if (registerGlobal) {
-				// register preference globally in case multiple installations
+				// Register preference globally in case multiple installations
 				global[REGISTRATION_KEY] = registered;
 			}
 		}

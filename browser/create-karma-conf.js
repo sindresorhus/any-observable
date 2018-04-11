@@ -1,5 +1,5 @@
 'use strict';
-var arrify = require('arrify');
+const arrify = require('arrify');
 
 // Creates a karma.conf implementation that runs a specific set of files.
 module.exports = function (files) {

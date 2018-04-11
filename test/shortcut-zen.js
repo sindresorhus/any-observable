@@ -1,7 +1,7 @@
-import '../register/zen';
+import '../register/zen'; // eslint-disable-line import/no-unassigned-import
 import test from 'ava';
 import ZenObservable from 'zen-observable';
-import AnyObservable from '../';
+import AnyObservable from '..';
 import implementation from '../implementation';
 
 test(t => {
