@@ -1,9 +1,9 @@
 'use strict';
-const REGISTRATION_KEY = '@@any-observable/REGISTRATION';
+const REGISTRATION_KEY = Symbol('@@any-observable/REGISTRATION');
 let registered = null;
 
-module.exports = function (global, loadImplementation) {
-	return function (implementation, opts) {
+module.exports = (global, loadImplementation) => {
+	return (implementation, opts) => {
 		opts = opts || {};
 
 		// global registration unless explicitly  {global: false} in options (default true)
@@ -15,9 +15,7 @@ module.exports = function (global, loadImplementation) {
 		}
 
 		if (registered && implementation && registered.implementation !== implementation) {
-			throw new Error('any-observable already defined as "' + registered.implementation +
-				'".  You can only register an implementation before the first ' +
-				' call to require(\'any-observable\') and an implementation cannot be changed');
+			throw new Error(`any-observable already defined as "${registered.implementation}". You can only register an implementation before the first call to require('any-observable') and an implementation cannot be changed`);
 		}
 
 		if (!registered) {

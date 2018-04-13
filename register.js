@@ -42,9 +42,9 @@ function tryAutoDetect() {
 		'zen-observable'
 	];
 
-	for (let i = 0; i < libs.length; i++) {
+	for (const lib of libs) {
 		try {
-			return loadImplementation(libs[i]);
+			return loadImplementation(lib);
 		} catch (err) {}
 	}
 
