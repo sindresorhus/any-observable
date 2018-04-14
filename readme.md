@@ -8,20 +8,20 @@ Like [`any-promise`](https://github.com/kevinbeaty/any-promise). *(Docs are lack
 ## Install
 
 ```
-$ npm install --save any-observable
+$ npm install any-observable
 ```
 
 You must also install the Observable library you want:
 
 ```
-$ npm install --save zen-observable
+$ npm install zen-observable
 ```
 
 
 ## Usage
 
 ```js
-const Observable = require('any-observable'); // using `zen-observable` since it's installed
+const Observable = require('any-observable'); // Using `zen-observable` since it's installed
 
 Observable.of(1, 2).forEach(x => console.log(x));
 //=> 1

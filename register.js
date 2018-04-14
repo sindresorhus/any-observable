@@ -45,7 +45,7 @@ function tryAutoDetect() {
 	for (const lib of libs) {
 		try {
 			return loadImplementation(lib);
-		} catch (err) {}
+		} catch (_) {}
 	}
 
 	return null;
