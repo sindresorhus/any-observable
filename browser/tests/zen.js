@@ -1,9 +1,9 @@
-var assert = require('assert');
-var ZenObservable = require('zen-observable');
+const assert = require('assert');
+const ZenObservable = require('zen-observable');
 require('../../register')('zen-observable', {Observable: ZenObservable});
 
-var AnyObservable = require('../../');
+const AnyObservable = require('../..');
 
-it('zen', function () {
+it('zen', () => {
 	assert.strictEqual(AnyObservable, ZenObservable);
 });

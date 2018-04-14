@@ -9,8 +9,7 @@ module.exports = require('./loader')(window, loadImplementation);
  */
 function loadImplementation() {
 	if (typeof window.Observable === 'undefined') {
-		throw new Error('any-observable browser requires a polyfill or explicit registration' +
-			' e.g: require(\'any-observable/register\')(\'rxjs\', {Observable: require(\'rxjs/Observable\').Observable})');
+		throw new TypeError(`any-observable browser requires a polyfill or explicit registration e.g: require('any-observable/register')('rxjs', {Observable: require('rxjs/Observable').Observable})`);
 	}
 
 	return {

@@ -17,11 +17,11 @@ if (majorVersion <= 4) {
 		const basename = path.basename(filename, '.js');
 		const filepath = path.join(testsDir, filename);
 
-		test.serial(basename, () => {
-			return execa('karma', ['start', conf], {
+		test.serial(basename, async t => {
+			await t.notThrows(execa('karma', ['start', conf], {
 				cwd,
 				env: Object.assign({}, process.env, {ANY_OBSERVABLE_TEST_PATH: filepath})
-			});
+			}));
 		});
 	});
 }

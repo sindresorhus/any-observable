@@ -1,8 +1,8 @@
 require('../register')('zen-observable');
-var test = require('ava');
-var ZenObservable = require('zen-observable');
-var AnyObservable = require('../');
-var implementation = require('../implementation');
+const test = require('ava');
+const ZenObservable = require('zen-observable');
+const AnyObservable = require('..');
+const implementation = require('../implementation');
 
 test(t => {
 	t.is(AnyObservable, ZenObservable);

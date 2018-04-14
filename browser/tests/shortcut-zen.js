@@ -1,11 +1,11 @@
-require('../../register/zen');
+require('../../register/zen'); // eslint-disable-line import/no-unassigned-import
 
-var assert = require('assert');
-var ZenObservable = require('zen-observable');
-var AnyObservable = require('../../');
-var implementation = require('../../implementation');
+const assert = require('assert');
+const ZenObservable = require('zen-observable');
+const AnyObservable = require('../..');
+const implementation = require('../../implementation');
 
-it('shortcut-zen', function () {
+it('shortcut-zen', () => {
 	assert.strictEqual(AnyObservable, ZenObservable);
 	assert.strictEqual(implementation, 'zen-observable');
 });

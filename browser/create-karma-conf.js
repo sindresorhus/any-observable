@@ -1,5 +1,5 @@
 'use strict';
-var arrify = require('arrify');
+const arrify = require('arrify');
 
 // Creates a karma.conf implementation that runs a specific set of files.
 module.exports = function (files) {
@@ -13,7 +13,13 @@ module.exports = function (files) {
 			browserify: {
 				debug: true
 			},
-			browsers: [process.env.CI ? 'PhantomJS' : 'Chrome'],
+			customLaunchers: {
+				ChromeHeadlessNoSandbox: {
+					base: 'ChromeHeadless',
+					flags: ['--no-sandbox']
+				}
+			},
+			browsers: [process.env.CI ? 'ChromeHeadlessNoSandbox' : 'ChromeHeadless'],
 			autoWatch: false,
 			singleRun: true
 		});
