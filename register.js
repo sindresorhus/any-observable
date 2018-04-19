@@ -38,7 +38,7 @@ function loadImplementation(implementation) {
 
 function tryAutoDetect() {
 	const libs = [
-		'rxjs/Observable',
+		'rxjs',
 		'zen-observable'
 	];
 
