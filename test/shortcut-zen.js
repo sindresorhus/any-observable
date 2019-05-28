@@ -4,7 +4,7 @@ import ZenObservable from 'zen-observable';
 import AnyObservable from '..';
 import implementation from '../implementation';
 
-test(t => {
+test('main', t => {
 	t.is(AnyObservable, ZenObservable);
 	t.is(implementation, 'zen-observable');
 });

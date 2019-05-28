@@ -4,7 +4,7 @@ import {Observable as RxJsObservable} from 'rxjs/Observable';
 import AnyObservable from '..';
 import implementation from '../implementation';
 
-test(t => {
+test('main', t => {
 	t.is(AnyObservable, RxJsObservable);
 	t.is(implementation, 'rxjs/Observable');
 	t.is(typeof RxJsObservable.of, 'function');

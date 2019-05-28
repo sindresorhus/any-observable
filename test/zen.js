@@ -4,7 +4,7 @@ const ZenObservable = require('zen-observable');
 const AnyObservable = require('..');
 const implementation = require('../implementation');
 
-test(t => {
+test('main', t => {
 	t.is(AnyObservable, ZenObservable);
 	t.is(implementation, 'zen-observable');
 });

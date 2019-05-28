@@ -23,7 +23,9 @@ $ npm install zen-observable
 ```js
 const Observable = require('any-observable'); // Using `zen-observable` since it's installed
 
-Observable.of(1, 2).forEach(x => console.log(x));
+Observable.of(1, 2).forEach(value => {
+	console.log(value);
+});
 //=> 1
 //=> 2
 ```
@@ -54,8 +56,3 @@ $ ava --require=any-observable/register/zen test.js
 
 - [is-observable](https://github.com/sindresorhus/is-observable) - Check if a value is an Observable
 - [observable-to-promise](https://github.com/sindresorhus/observable-to-promise) - Convert an Observable to a Promise
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

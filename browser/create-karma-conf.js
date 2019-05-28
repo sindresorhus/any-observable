@@ -1,14 +1,19 @@
 'use strict';
 const arrify = require('arrify');
 
-// Creates a karma.conf implementation that runs a specific set of files.
+// Creates a `karma.conf` implementation that runs a specific set of files
 module.exports = function (files) {
-	return function (karma) {
+	return karma => {
 		karma.set({
-			frameworks: ['mocha', 'browserify'],
+			frameworks: [
+				'mocha',
+				'browserify'
+			],
 			files: arrify(files),
 			preprocessors: {
-				'tests/*.js': ['browserify']
+				'tests/*.js': [
+					'browserify'
+				]
 			},
 			browserify: {
 				debug: true
@@ -16,10 +21,14 @@ module.exports = function (files) {
 			customLaunchers: {
 				ChromeHeadlessNoSandbox: {
 					base: 'ChromeHeadless',
-					flags: ['--no-sandbox']
+					flags: [
+						'--no-sandbox'
+					]
 				}
 			},
-			browsers: [process.env.CI ? 'ChromeHeadlessNoSandbox' : 'ChromeHeadless'],
+			browsers: [
+				process.env.CI ? 'ChromeHeadlessNoSandbox' : 'ChromeHeadless'
+			],
 			autoWatch: false,
 			singleRun: true
 		});
