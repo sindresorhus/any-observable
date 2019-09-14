@@ -1,7 +1,7 @@
 const test = require('ava');
 const RxJsObservable = require('rxjs').Observable;
-const AnyObservable = require('..');
 const implementation = require('../implementation');
+const AnyObservable = require('..');
 
 test('main', t => {
 	t.is(AnyObservable, RxJsObservable);

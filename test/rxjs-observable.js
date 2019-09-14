@@ -1,10 +1,10 @@
-require('../register')('rxjs/Observable');
+require('../register')('rxjs');
 const test = require('ava');
-const RxJsObservable = require('rxjs/Observable').Observable;
-const AnyObservable = require('..');
+const RxJsObservable = require('rxjs').Observable;
 const implementation = require('../implementation');
+const AnyObservable = require('..');
 
 test('main', t => {
 	t.is(AnyObservable, RxJsObservable);
-	t.is(implementation, 'rxjs/Observable');
+	t.is(implementation, 'rxjs');
 });
