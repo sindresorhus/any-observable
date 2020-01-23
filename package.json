@@ -31,6 +31,14 @@
 		"any",
 		"rxjs"
 	],
+	"peerDependenciesMeta": {
+		"rxjs": {
+			"optional": true
+		},
+		"zen-observable": {
+			"optional": true
+		}
+	},
 	"devDependencies": {
 		"arrify": "^2.0.1",
 		"ava": "^1.4.1",
