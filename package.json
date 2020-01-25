@@ -31,14 +31,6 @@
 		"any",
 		"rxjs"
 	],
-	"peerDependenciesMeta": {
-		"rxjs": {
-			"optional": true
-		},
-		"zen-observable": {
-			"optional": true
-		}
-	},
 	"devDependencies": {
 		"arrify": "^2.0.1",
 		"ava": "^1.4.1",
@@ -53,6 +45,14 @@
 		"watchify": "^3.11.0",
 		"xo": "^0.24.0",
 		"zen-observable": "^0.8.8"
+	},
+	"peerDependenciesMeta": {
+		"rxjs": {
+			"optional": true
+		},
+		"zen-observable": {
+			"optional": true
+		}
 	},
 	"browser": {
 		"./register.js": "./register-shim.js"
