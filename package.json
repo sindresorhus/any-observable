@@ -4,6 +4,7 @@
 	"description": "Support any Observable library and polyfill",
 	"license": "MIT",
 	"repository": "sindresorhus/any-observable",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",

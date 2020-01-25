@@ -4,7 +4,6 @@
 
 Like [`any-promise`](https://github.com/kevinbeaty/any-promise). *(Docs are lacking here, so refer to those docs for now)*
 
-
 ## Install
 
 ```
@@ -16,7 +15,6 @@ You must also install the Observable library you want:
 ```
 $ npm install zen-observable
 ```
-
 
 ## Usage
 
@@ -51,12 +49,10 @@ It's especially handy for more recent versions of Node.js (and many test runners
 $ ava --require=any-observable/register/zen test.js
 ```
 
-
 ## Related
 
 - [is-observable](https://github.com/sindresorhus/is-observable) - Check if a value is an Observable
 - [observable-to-promise](https://github.com/sindresorhus/observable-to-promise) - Convert an Observable to a Promise
-
 
 ---
 
