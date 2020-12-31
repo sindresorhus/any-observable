@@ -1,4 +1,4 @@
-# any-observable [![Build Status](https://travis-ci.org/sindresorhus/any-observable.svg?branch=master)](https://travis-ci.org/sindresorhus/any-observable)
+# any-observable
 
 > Support any [Observable](https://github.com/zenparsing/es-observable) library and polyfill
 
