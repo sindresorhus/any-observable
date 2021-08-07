@@ -26,7 +26,7 @@ function loadImplementation(implementation) {
 	}
 
 	if (!finalImplementation) {
-		throw new Error('Cannot find any-observable implementation nor `global.Observable`. You must install polyfill or call `require(\'any-observable/register\') with your preferred implementation, for example, `require(\'any-observable/register\')(\'rxjs\')` on app load prior to any `require(\'any-observable\').');
+		throw new Error('Cannot find any-observable implementation nor `global.Observable`. You must install polyfill or call `require(\'any-observable/register\')` with your preferred implementation, for example, `require(\'any-observable/register\')(\'rxjs\')` on app load prior to any `require(\'any-observable\')`.');
 	}
 
 	return finalImplementation;
