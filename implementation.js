@@ -1,2 +1,5 @@
-'use strict';
-module.exports = require('./register')().implementation;
+import register from './register.js';
+
+const {implementation} = register();
+
+export default implementation;

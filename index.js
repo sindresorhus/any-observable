@@ -1,2 +1,5 @@
-'use strict';
-module.exports = require('./register')().Observable;
+import register from './register.js';
+
+const {Observable} = register();
+
+export default Observable;

@@ -1,9 +1,8 @@
-require('../../register/zen'); // eslint-disable-line import/no-unassigned-import
-
-const assert = require('assert');
-const ZenObservable = require('zen-observable');
-const AnyObservable = require('../..');
-const implementation = require('../../implementation');
+import '../../register/zen.js';
+import assert from 'assert';
+import ZenObservable from 'zen-observable';
+import AnyObservable from '../../index.js';
+import implementation from '../../implementation.js';
 
 it('shortcut-zen', () => {
 	assert.strictEqual(AnyObservable, ZenObservable);

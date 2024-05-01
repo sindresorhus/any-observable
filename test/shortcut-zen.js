@@ -1,10 +1,12 @@
-import '../register/zen'; // eslint-disable-line import/no-unassigned-import
 import test from 'ava';
 import ZenObservable from 'zen-observable';
-import implementation from '../implementation';
-import AnyObservable from '..';
 
-test('main', t => {
+test('main', async t => {
+	await import('../register/zen.js');
+
+	const {default: AnyObservable} = await import('../index.js');
+	const {default: implementation} = await import('../implementation.js');
+
 	t.is(AnyObservable, ZenObservable);
 	t.is(implementation, 'zen-observable');
 });

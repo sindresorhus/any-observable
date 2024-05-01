@@ -8,10 +8,23 @@
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
+	"type": "module",
+	"exports": {
+		".": "./index.js",
+		"./implementation": "./implementation.js",
+		"./loader": "./loader.js",
+		"./register": {
+			"browser": "./register-shim.js",
+			"default": "./register.js"
+		},
+		"./register-shim": "./register-shim.js",
+		"./register/*": "./register/*.js"
+	},
+	"sideEffects": true,
 	"engines": {
-		"node": ">=8"
+		"node": ">=20"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -33,19 +46,19 @@
 		"rxjs"
 	],
 	"devDependencies": {
-		"arrify": "^2.0.1",
-		"ava": "^1.4.1",
-		"browserify": "^16.2.0",
-		"execa": "^1.0.0",
-		"karma": "^4.1.0",
-		"karma-browserify": "^6.0.0",
-		"karma-chrome-launcher": "^2.2.0",
-		"karma-mocha": "^1.3.0",
-		"mocha": "^6.1.4",
-		"rxjs": "^6.5.3",
-		"watchify": "^3.11.0",
-		"xo": "^0.24.0",
-		"zen-observable": "^0.8.8"
+		"arrify": "^3.0.0",
+		"ava": "^6.4.1",
+		"browserify": "^17.0.1",
+		"execa": "^9.6.1",
+		"karma": "^6.4.4",
+		"karma-browserify": "^8.1.0",
+		"karma-chrome-launcher": "^3.2.0",
+		"karma-mocha": "^2.0.1",
+		"mocha": "^11.7.5",
+		"rxjs": "^7.8.2",
+		"watchify": "^4.0.0",
+		"xo": "^1.2.3",
+		"zen-observable": "^0.10.0"
 	},
 	"peerDependenciesMeta": {
 		"rxjs": {
@@ -58,14 +71,26 @@
 	"browser": {
 		"./register.js": "./register-shim.js"
 	},
-	"xo": {
-		"overrides": [
-			{
-				"files": "browser/tests/**",
-				"envs": [
-					"mocha"
-				]
+	"xo": [
+		{
+			"files": "browser/tests/**",
+			"languageOptions": {
+				"globals": {
+					"it": "readonly"
+				}
+			},
+			"rules": {
+				"unicorn/prefer-node-protocol": "off",
+				"import/no-unassigned-import": "off",
+				"import/order": "off",
+				"import-x/no-unassigned-import": "off",
+				"import-x/order": "off"
 			}
+		}
+	],
+	"ava": {
+		"files": [
+			"test/**/*.js"
 		]
 	}
 }

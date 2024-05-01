@@ -1,4 +1,4 @@
-'use strict';
-require('../register')('rxjs', {
-	Observable: require('rxjs').Observable
-});
+import {Observable} from 'rxjs';
+import register from '../register.js';
+
+register('rxjs', {Observable});

@@ -1,10 +1,13 @@
-require('../register')('rxjs');
-const test = require('ava');
-const RxJsObservable = require('rxjs').Observable;
-const implementation = require('../implementation');
-const AnyObservable = require('..');
+import test from 'ava';
+import {Observable as RxJsObservable} from 'rxjs';
+import register from '../register.js';
 
-test('main', t => {
+test('main', async t => {
+	register('rxjs');
+
+	const {default: AnyObservable} = await import('../index.js');
+	const {default: implementation} = await import('../implementation.js');
+
 	t.is(AnyObservable, RxJsObservable);
 	t.is(implementation, 'rxjs');
 });

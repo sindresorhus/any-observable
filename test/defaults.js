@@ -1,7 +1,7 @@
-const test = require('ava');
-const RxJsObservable = require('rxjs').Observable;
-const implementation = require('../implementation');
-const AnyObservable = require('..');
+import test from 'ava';
+import {Observable as RxJsObservable} from 'rxjs';
+import implementation from '../implementation.js';
+import AnyObservable from '../index.js';
 
 test('main', t => {
 	t.is(AnyObservable, RxJsObservable);

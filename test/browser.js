@@ -1,23 +1,29 @@
-import path from 'path';
-import fs from 'fs';
+import fs from 'node:fs';
+import path from 'node:path';
+import process from 'node:process';
+import {fileURLToPath} from 'node:url';
 import test from 'ava';
-import execa from 'execa';
+import {execa} from 'execa';
 
-const cwd = path.join(__dirname, '..');
-const conf = path.join(__dirname, '..', 'browser', 'from-env.js');
-const testsDirectory = path.join(__dirname, '..', 'browser', 'tests');
+const currentFilePath = fileURLToPath(import.meta.url);
+const currentDirectory = path.dirname(currentFilePath);
+const cwd = path.join(currentDirectory, '..');
+const configFilePath = path.join(currentDirectory, '..', 'browser', 'from-env.cjs');
+const testsDirectory = path.join(currentDirectory, '..', 'browser', 'tests');
 
-for (const filename of fs.readdirSync(testsDirectory)) {
+const browserTestFiles = fs.readdirSync(testsDirectory).filter(filename => !filename.startsWith('register-'));
+
+for (const filename of browserTestFiles) {
 	const basename = path.basename(filename, '.js');
 	const filepath = path.join(testsDirectory, filename);
 
 	test.serial(basename, async t => {
-		await t.notThrowsAsync(execa('karma', ['start', conf], {
+		await t.notThrowsAsync(execa('karma', ['start', configFilePath], {
 			cwd,
 			env: {
 				...process.env,
-				ANY_OBSERVABLE_TEST_PATH: filepath
-			}
+				ANY_OBSERVABLE_TEST_PATH: filepath,
+			},
 		}));
 	});
 }

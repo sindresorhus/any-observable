@@ -1,10 +1,8 @@
-'use strict';
-
 const REGISTRATION_KEY = Symbol('@@any-observable/REGISTRATION');
 
 let isRegistered;
 
-module.exports = (global, loadImplementation) => {
+export default function registerObservable(global, loadImplementation) {
 	return (implementation, options = {}) => {
 		// Global registration unless explicitly `{global: false}`` in options (default true)
 		const registerGlobal = options.global !== false;
@@ -15,7 +13,9 @@ module.exports = (global, loadImplementation) => {
 		}
 
 		if (isRegistered && implementation && isRegistered.implementation !== implementation) {
-			throw new Error(`any-observable already defined as \`${isRegistered.implementation}\`. You can only register an implementation before the first call to \`require('any-observable')\` and an implementation cannot be changed`);
+			const message = `any-observable already defined as \`${isRegistered.implementation}\`. `
+				+ 'You can only register an implementation before the first import of `any-observable` and an implementation cannot be changed';
+			throw new Error(message);
 		}
 
 		if (!isRegistered) {
@@ -23,7 +23,7 @@ module.exports = (global, loadImplementation) => {
 			if (implementation && options.Observable) {
 				isRegistered = {
 					Observable: options.Observable,
-					implementation
+					implementation,
 				};
 			} else {
 				// Require implementation if implementation is specified but not provided
@@ -38,4 +38,4 @@ module.exports = (global, loadImplementation) => {
 
 		return isRegistered;
 	};
-};
+}

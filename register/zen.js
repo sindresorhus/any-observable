@@ -1,2 +1,4 @@
-'use strict';
-require('../register')('zen-observable', {Observable: require('zen-observable')});
+import Observable from 'zen-observable';
+import register from '../register.js';
+
+register('zen-observable', {Observable});
