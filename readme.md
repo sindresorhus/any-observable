@@ -2,8 +2,6 @@
 
 > Support any [Observable](https://github.com/zenparsing/es-observable) library and polyfill
 
-Like [`any-promise`](https://github.com/kevinbeaty/any-promise). *(Docs are lacking here, so refer to those docs for now)*
-
 ## Install
 
 ```sh
@@ -87,6 +85,14 @@ import register from 'any-observable/register';
 
 register('custom', {Observable: YourObservable});
 ```
+
+## For library authors
+
+If your library depends on Observables via `any-observable`, follow these guidelines:
+
+- **Do not call `register` yourself.** Leave Observable implementation choice to the end user.
+- **Do not rely on non-standard features.** Stick to the [ES Observable spec](https://github.com/zenparsing/es-observable) so any compliant implementation works.
+- **Document `any-observable` support prominently.** Let users know they need to install and register an Observable implementation.
 
 ## Related
 
