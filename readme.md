@@ -49,6 +49,23 @@ It's especially handy for environments that support preloading ESM modules:
 node --import=any-observable/register/zen test.js
 ```
 
+## Browser native ESM registration
+
+Use the async helper when you want to probe multiple implementations in a browser native ESM setup:
+
+```js
+import registerAsync from 'any-observable/register/async';
+
+await registerAsync([
+	'rxjs',
+	'zen-observable'
+]);
+
+const {default: Observable} = await import('any-observable');
+```
+
+This requires import maps or URL specifiers for the implementations you probe, and it must run before any `import 'any-observable'`.
+
 ## Related
 
 - [is-observable](https://github.com/sindresorhus/is-observable) - Check if a value is an Observable
