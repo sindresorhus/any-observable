@@ -28,6 +28,18 @@ Observable.of(1, 2).forEach(value => {
 //=> 2
 ```
 
+## Optional import
+
+If you want to attempt loading without throwing, use the optional entrypoint. It returns `undefined` when no implementation is available:
+
+```js
+import Observable from 'any-observable/optional';
+
+if (Observable === undefined) {
+	console.log('No Observable implementation available');
+}
+```
+
 ## Registration Shortcuts
 
 This adds the following shortcut registrations:

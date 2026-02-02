@@ -15,6 +15,7 @@
 		".": "./index.js",
 		"./implementation": "./implementation.js",
 		"./loader": "./loader.js",
+		"./optional": "./optional.js",
 		"./register": {
 			"browser": "./register-shim.js",
 			"default": "./register.js"
@@ -33,6 +34,7 @@
 		"index.js",
 		"implementation.js",
 		"loader.js",
+		"optional.js",
 		"register.js",
 		"register-shim.js",
 		"register"
