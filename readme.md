@@ -66,6 +66,16 @@ const {default: Observable} = await import('any-observable');
 
 This requires import maps or URL specifiers for the implementations you probe, and it must run before any `import 'any-observable'`.
 
+## Compatibility and interop
+
+`any-observable` expects an ES Observable implementation (a constructor), not just interop on stream instances. Libraries like most, Kefir, Bacon, xstream, and Flyd are not supported directly unless they provide an ES Observable constructor. If your library can convert to an ES Observable, use that and register explicitly:
+
+```js
+import register from 'any-observable/register';
+
+register('custom', {Observable: YourObservable});
+```
+
 ## Related
 
 - [is-observable](https://github.com/sindresorhus/is-observable) - Check if a value is an Observable
